@@ -1,7 +1,12 @@
-# Parametric prosthetic foot for Cats
+# Parametric prosthetic foot for Cats designed in FreeCAD
 
 Developed in partnership with Dr. Itallo Freitas
 
+## Altering dimensions
+
+To alter the dimensions use the `variables` spreadsheet within FreeCAD
+
+![alt text](fig/dims.png)
 
 ## Parts 
 
