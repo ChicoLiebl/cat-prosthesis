@@ -4,20 +4,24 @@
 // ============ PARAMETERS ============
 // First cylinder
 cylinder_length_1 = 50;       // Length of first section
-cylinder_diameter = 18;       // Diameter of cylinders
+cylinder_diameter = 19;       // Diameter of cylinders
 
 // Bend and second cylinder
 bend_angle = 60;              // Bend angle in degrees
 cylinder_length_2 = 32;       // Length after bend
 
-// Slot at end
-slot_width = 10;              // Width of slot
-slot_depth = 13;              // Depth of slot into cylinder
+// Bushing slot
+slot_width = 14;              // Width of slot
+slot_depth = 25/2 + 0.3;              // Depth of slot into cylinder
+
+// Baro hole
+bar_diameter = 5.1;
+bar_length = 100;
 
 // Radial holes
 radial_hole_diameter = 4;     // Diameter of radial holes
 radial_hole_count = 2;        // Number of radial holes
-radial_hole_offset = 9;       // Distance from end of cylinder to hole center
+radial_hole_offset = (25/2) - 5;       // Distance from end of cylinder to hole center
 
 // Sphere at start
 sphere_diameter = 22;         // Sphere diameter
@@ -61,6 +65,13 @@ difference() {
         rotate([bend_angle, 0, 0])
             translate([0, 0, cylinder_length_2 - slot_depth])
                 cylinder(h = slot_depth + 1, d = slot_width);
+    
+    // Cylindrical slot at the end of the second cylinder
+    // 10mm diameter, 10mm deep
+    translate([0, 0, cylinder_length_1])
+        rotate([bend_angle, 0, 0])
+            translate([0, 0, cylinder_length_2 - bar_length])
+                cylinder(h = bar_length + 1, d = bar_diameter);
 
     // Two radial holes through the slot area, 90° apart
     translate([0, 0, cylinder_length_1])
